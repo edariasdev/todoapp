@@ -38,12 +38,35 @@ function addTask(e) {
 
     } else {
 
+        // Set Dates
+        let dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+        // Set Strings
+        let str1 = "";
+        let str2 = ",";
+        let str3 = " "
+
+        // Get current Day
+        let now = new Date();
+        let nowDay = now.getDay();
+        let theeDay = now.getUTCDate();
+        let nowMonth = now.getMonth();
+        let nowYear = now.getFullYear();
+        let dayofWeek = dayNames[nowDay];
+        let monthofYear = months[nowMonth];
+        let theDay = str1.concat(dayofWeek, str2, str3, monthofYear, str3, theeDay, str3, str2, str3, nowYear, str3);
+        let theHour = now.getHours().toString();
+        let theMinute = now.getMinutes().toString();
+        let theTime = theHour.concat(":", theMinute);
+        let concatt = theDay.concat(" ", theTime);
+
         // Create list {'li')} item element: 
         const li = document.createElement('li');
         // Add a class ('collection-item') to the item created:
         li.className = 'collection-item';
         // Create text node and append to the ('li'):
-        li.appendChild(document.createTextNode(taskInput.value));
+        li.appendChild(document.createTextNode(taskInput.value + "   --->  Added on: " + concatt));
         // Create new link ('a') element for item:
         const link = document.createElement('a');
         // Add class to the link:
