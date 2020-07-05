@@ -1,4 +1,4 @@
-# todoapp
+# To-Do App
 To-Do App written in Vanilla JS
 
 Concepts used:
