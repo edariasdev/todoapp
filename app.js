@@ -6,6 +6,9 @@ const clearBtn = document.querySelector('.clear-tasks');
 const filter = document.querySelector('#filter');
 const taskInput = document.querySelector('#task');
 
+// Set Page Name for alert:
+let pageName = document.title.toString();
+
 // Load all event listeners:
 loadEventListeners();
 
@@ -22,7 +25,6 @@ function loadEventListeners() {
     clearBtn.addEventListener('click', clearTasks);
     // Filter tasks event listner:
     filter.addEventListener('keyup', filterTasks);
-
 
 }
 
@@ -110,11 +112,12 @@ function clearTasks() {
         tasklist.removeChild(tasklist.firstChild);
     }
 
-    // Another way that works, but slower:
-    // taskList.innerHTML = '';
-    // More info: https://jsperf.com/innerhtml-vs-removechild
+    // Confirm before deleting:
+    if (confirm('Are you sure?')) {
 
-    clearTasksFromLocalStorage();
+        clearTasksFromLocalStorage();
+    }
+
 
 };
 
